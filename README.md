@@ -1,3 +1,15 @@
+SISTEMA DE CONTROL ESCOLAR
+Sistema realizado con laravel 8 en donde cumple la funcion de un sistema de control escolar. Algunos de las características con las que cuenta son als siguientes:
+- roles diferentes de inicio de sesion (estudiante, maestro administrador).
+- funciones del estudiante como calificaciones, materias, horario, datos personales, materias acreditadas, etc.
+- funciones del maestro como asignar calificaciones, horarios de materias, ver alumnos por materia, datos personales, tec.
+
+Imagenes ilustrativas del sistema: 
+<img src="img_ilustrativa1.png">
+<img src="img_ilustrativa2.png">
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
