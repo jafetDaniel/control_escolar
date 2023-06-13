@@ -1,4 +1,6 @@
-SISTEMA DE CONTROL ESCOLAR
+SISTEMA DE CONTROL ESCOLAR.
+
+
 Sistema realizado con laravel 8 en donde cumple la funcion de un sistema de control escolar. Algunos de las características con las que cuenta son als siguientes:
 - roles diferentes de inicio de sesion (estudiante, maestro administrador).
 - funciones del estudiante como calificaciones, materias, horario, datos personales, materias acreditadas, etc.
