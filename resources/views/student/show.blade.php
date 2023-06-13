@@ -49,6 +49,10 @@
                             {{ $student->status }}
                         </div>
                         <div class="form-group">
+                            <strong>Foto:</strong>
+                            {{ $student->foto }}
+                        </div>
+                        <div class="form-group">
                             <strong>User Id:</strong>
                             {{ $student->user_id }}
                         </div>

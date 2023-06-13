@@ -21,6 +21,7 @@ class CreateTeachersTable extends Migration
             $table->string('gender'); //genero
             $table->Integer('phone');
             $table->string('status');
+            $table->string('foto');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

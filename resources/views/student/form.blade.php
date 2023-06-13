@@ -36,6 +36,17 @@
             {{ Form::text('status', $student->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
+        <br>
+        <div class="form-group">
+            {{ Form::label('foto') }}
+            <br>
+            <img src="{{asset('storage').'/'.$student->foto}}" width="100px" height="100px" alt=" ">
+            {{ Form::file('foto',['class' => 'form-control' . ($errors->has('foto') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('foto', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <br>
+
         <div class="form-group">
             {{ Form::label('user_id') }}
             {{ Form::text('user_id', $student->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}

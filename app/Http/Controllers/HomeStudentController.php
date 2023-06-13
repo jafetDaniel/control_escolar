@@ -10,7 +10,7 @@ class HomeStudentController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); //verificar que este autentificado
     }
 
  
@@ -23,6 +23,6 @@ class HomeStudentController extends Controller
                    ->select('students.*', 'careers.name AS career_name', 'semesters.name AS semester_name')
                    ->where('user_id', $id)->first();
 
-        return view('home_student', ['student'=> $student]);
+        return view('home_student', ['student'=> $student]); //pasar variabel a view
     }
 }

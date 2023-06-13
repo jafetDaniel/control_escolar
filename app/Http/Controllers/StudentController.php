@@ -1,21 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-/**
- * Class StudentController
- * @package App\Http\Controllers
- */
+use Illuminate\Support\Facades\Storage;
+
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $students = Student::paginate();
@@ -24,39 +16,29 @@ class StudentController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $students->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         $student = new Student();
         return view('student.create', compact('student'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+ 
+    public function store(Request $request)//create
     {
         request()->validate(Student::$rules);
+        $student = request()->except('_token'); //obteniendo datos
 
-        $student = Student::create($request->all());
+        if ($request->hasFile('foto')) {
+            $student['foto']=$request->file('foto')->store('uploads', 'public'); //subir foto a carpeta uploads
+        }
 
+        Student::insert($student); //insertando datos a la BD
         return redirect()->route('students.index')
             ->with('success', 'Student created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         $student = Student::find($id);
@@ -64,12 +46,6 @@ class StudentController extends Controller
         return view('student.show', compact('student'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $student = Student::find($id);
@@ -77,32 +53,33 @@ class StudentController extends Controller
         return view('student.edit', compact('student'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Student $student
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Student $student)
+  
+    public function update(Request $request, $id)
     {
         request()->validate(Student::$rules);
+        $student = request()->except('_token', '_method'); //obteniendo datos de form
 
-        $student->update($request->all());
+         if ($request->hasFile('foto')) {
+             $st = Student::findOrFail($id);//obteniendo datos anteriores de la BD
+             Storage::delete('public/'.$st->foto); //borrar foto de storage
+             $student['foto']=$request->file('foto')->store('uploads', 'public'); //subir nueva foto a carpeta uploads
+        }
+
+        Student::where('id','=',$id)->update($student); //modificando datos en la BD
+        $st = Student::findOrFail($id);
 
         return redirect()->route('students.index')
             ->with('success', 'Student updated successfully');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+    
     public function destroy($id)
     {
-        $student = Student::find($id)->delete();
-
+        $st = Student::findOrFail($id);//obteniendo datos anteriores de la BD
+        if (Storage::delete(['public/'.$st->foto])) { //borrar foto del storage
+            $student = Student::find($id)->delete();
+        }
+       
         return redirect()->route('students.index')
             ->with('success', 'Student deleted successfully');
     }

@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        <th>Foto</th>
 										<th>Number Control</th>
 										<th>Address</th>
 										<th>Birthdate</th>
@@ -54,7 +54,9 @@
                                     @foreach ($students as $student)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+                                            <td>
+                                                <img src="{{asset('storage').'/'.$student->foto}}" width="100px" height="100px">
+                                            </td>
 											<td>{{ $student->number_control }}</td>
 											<td>{{ $student->address }}</td>
 											<td>{{ $student->birthdate }}</td>

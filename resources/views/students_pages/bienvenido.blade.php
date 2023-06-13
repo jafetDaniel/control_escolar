@@ -14,7 +14,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">  
-                                            <a class="h5 mb-0 font-weight-bold text-gray-800">Bienvenido</a>
+                                            <a class="h5 mb-0 font-weight-bold text-gray-800" href="{{route('home.student')}}">Bienvenido</a>
                                         </div>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a class="h5 mb-0 font-weight-bold text-gray-800">Calificaciones</a>
+                                            <a class="h5 mb-0 font-weight-bold text-gray-800" href="{{route('calificaciones.student')}}">Calificaciones</a>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -45,7 +45,7 @@
                                         <div class="col mr-2">    
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <a class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Carga</a>
+                                                    <a class="h5 mb-0 mr-3 font-weight-bold text-gray-800" href="{{route('carga.student')}}">Carga</a>
                                                 </div>                             
                                             </div>
                                         </div>
@@ -69,8 +69,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;"
-                                            src="img/undraw_posting_photo.svg" alt="photo">
+                                        <img src="{{asset('storage').'/'.$student->foto}}" width="120px" height="120px" alt="photo">
                                     </div>
                                     <p><strong>Nombre: </strong>{{ Auth::user()->name}}</p>
                                     <p><strong>Número de control: </strong>{{$student->number_control}}</p>
