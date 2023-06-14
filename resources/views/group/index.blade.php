@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Student
+    Group
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Student') }}
+                                {{ __('Group') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('students.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('groups.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -35,43 +35,29 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        <th>Photo</th>
-										<th>Number Control</th>
-										<th>Address</th>
-										<th>Birthdate</th>
-										<th>Gender</th>
-										<th>Phone</th>
-										<th>Average</th>
-										<th>Status</th>
-										<th>User Id</th>
-										<th>Career Id</th>
-										<th>Semester Id</th>
+                                        
+										<th>Name</th>
+										<th>Key</th>
+										<th>Schedule</th>
+										<th>Course Id</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($students as $student)
+                                    @foreach ($groups as $group)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td>
-                                                <img src="{{asset('storage').'/'.$student->photo}}" width="100px" height="100px">
-                                            </td>
-											<td>{{ $student->number_control }}</td>
-											<td>{{ $student->address }}</td>
-											<td>{{ $student->birthdate }}</td>
-											<td>{{ $student->gender }}</td>
-											<td>{{ $student->phone }}</td>
-											<td>{{ $student->average }}</td>
-											<td>{{ $student->status }}</td>
-											<td>{{ $student->user_id }}</td>
-											<td>{{ $student->career_id }}</td>
-											<td>{{ $student->semester_id }}</td>
+                                            
+											<td>{{ $group->name }}</td>
+											<td>{{ $group->key }}</td>
+											<td>{{ $group->schedule }}</td>
+											<td>{{ $group->course_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('students.destroy',$student->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('students.show',$student->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('students.edit',$student->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('groups.destroy',$group->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('groups.show',$group->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('groups.edit',$group->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -84,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $students->links() !!}
+                {!! $groups->links() !!}
             </div>
         </div>
     </div>

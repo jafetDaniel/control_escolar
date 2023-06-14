@@ -34,8 +34,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('students.index') }}">{{ __('estudiantes') }}</a>
+                            <a class="nav-link" href="{{ route('students.index') }}">{{ __('Estudiantes') }}</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('courses.index') }}">{{ __('Cursos') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('groups.index') }}">{{ __('Grupos') }}</a>
+                        </li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->

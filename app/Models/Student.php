@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $phone
  * @property $average
  * @property $status
- * @property $foto
+ * @property $photo
  * @property $user_id
  * @property $career_id
  * @property $semester_id
@@ -39,6 +39,7 @@ class Student extends Model
 		'phone' => 'required',
 		'average' => 'required',
 		'status' => 'required',
+        'photo' => 'required',
 		'user_id' => 'required',
 		'career_id' => 'required',
 		'semester_id' => 'required',
@@ -51,7 +52,7 @@ class Student extends Model
      *
      * @var array
      */
-    protected $fillable = ['number_control','address','birthdate','gender','phone','average','status','foto','user_id','career_id','semester_id'];
+    protected $fillable = ['number_control','address','birthdate','gender','phone','average','status','photo','user_id','career_id','semester_id'];
 
 
     /**

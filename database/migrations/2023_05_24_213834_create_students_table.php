@@ -22,7 +22,7 @@ class CreateStudentsTable extends Migration
             $table->Integer('phone');
             $table->double('average'); //promedio
             $table->string('status');
-            $table->string('foto');
+            $table->string('photo');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('career_id');
             $table->unsignedBigInteger('semester_id');

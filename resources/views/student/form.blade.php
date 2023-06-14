@@ -39,11 +39,11 @@
         
         <br>
         <div class="form-group">
-            {{ Form::label('foto') }}
+            {{ Form::label('photo') }}
             <br>
             <img src="{{asset('storage').'/'.$student->foto}}" width="100px" height="100px" alt=" ">
-            {{ Form::file('foto',['class' => 'form-control' . ($errors->has('foto') ? ' is-invalid' : '')]) }}
-            {!! $errors->first('foto', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::file('photo',['class' => 'form-control' . ($errors->has('photo') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('photo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <br>
 

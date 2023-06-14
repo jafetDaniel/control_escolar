@@ -29,8 +29,8 @@ class StudentController extends Controller
         request()->validate(Student::$rules);
         $student = request()->except('_token'); //obteniendo datos
 
-        if ($request->hasFile('foto')) {
-            $student['foto']=$request->file('foto')->store('uploads', 'public'); //subir foto a carpeta uploads
+        if ($request->hasFile('photo')) {
+            $student['photo']=$request->file('photo')->store('uploads', 'public'); //subir foto a carpeta uploads
         }
 
         Student::insert($student); //insertando datos a la BD
@@ -59,10 +59,10 @@ class StudentController extends Controller
         request()->validate(Student::$rules);
         $student = request()->except('_token', '_method'); //obteniendo datos de form
 
-         if ($request->hasFile('foto')) {
+         if ($request->hasFile('photo')) {
              $st = Student::findOrFail($id);//obteniendo datos anteriores de la BD
              Storage::delete('public/'.$st->foto); //borrar foto de storage
-             $student['foto']=$request->file('foto')->store('uploads', 'public'); //subir nueva foto a carpeta uploads
+             $student['photo']=$request->file('photo')->store('uploads', 'public'); //subir nueva foto a carpeta uploads
         }
 
         Student::where('id','=',$id)->update($student); //modificando datos en la BD

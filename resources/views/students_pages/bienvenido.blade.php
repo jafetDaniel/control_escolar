@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
-                                        <img src="{{asset('storage').'/'.$student->foto}}" width="120px" height="120px" alt="photo">
+                                        <img src="{{asset('storage').'/'.$student->photo}}" width="120px" height="120px" alt="photo">
                                     </div>
                                     <p><strong>Nombre: </strong>{{ Auth::user()->name}}</p>
                                     <p><strong>Número de control: </strong>{{$student->number_control}}</p>
