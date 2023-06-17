@@ -14,7 +14,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">  
-                                            <a class="h5 mb-0 font-weight-bold text-gray-800" href="{{route('home.student')}}">Bienvenido</a>
+                                            <a class="h5 mb-0 font-weight-bold text-gray-800" href="{{route('home')}}">Bienvenido</a>
                                         </div>
                                     </div>
                                 </div>

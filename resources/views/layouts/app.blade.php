@@ -33,8 +33,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users.index') }}">{{ __('Users') }}</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('students.index') }}">{{ __('Estudiantes') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('teachers.index') }}">{{ __('Maestros') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('careers.index') }}">{{ __('Carreras') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('semesters.index') }}">{{ __('Semestres') }}</a>
                         </li>
 
                         <li class="nav-item">
@@ -44,7 +61,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('groups.index') }}">{{ __('Grupos') }}</a>
                         </li>
-                        
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('groups-student.index') }}">{{ __('Grupos estudiantes') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('groups-teacher.index') }}">{{ __('Grupos maestros') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('periods.index') }}">{{ __('Periodos') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
