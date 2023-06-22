@@ -16,15 +16,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\GroupsStudentController;
 use App\Http\Controllers\GroupsTeacherController;
-
  Route::get('/', function () {
    return view('welcome');
  });
  Route::get('/admin', function () {
   return view('welcome_admin');
 });
+Route::get('/home_admin', function () {
+  return view('home_admin');
+});
 
- Auth::routes(); //todas las rutas de autenticacion
+Auth::routes(); //todas las rutas de autenticacion
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 

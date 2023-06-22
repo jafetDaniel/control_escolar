@@ -7,8 +7,8 @@
             {!! $errors->first('teacher_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('group_id') }}
-            {{ Form::text('group_id', $groupsTeacher->group_id, ['class' => 'form-control' . ($errors->has('group_id') ? ' is-invalid' : ''), 'placeholder' => 'Group Id']) }}
+            {{ Form::label('group') }}
+            {{ Form::select('group_id', $groups, $groupsTeacher->group_id, ['class' => 'form-control' . ($errors->has('group_id') ? ' is-invalid' : ''), 'placeholder' => 'Group Id']) }}
             {!! $errors->first('group_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

@@ -4,18 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-/**
- * Class TeacherController
- * @package App\Http\Controllers
- */
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $teachers = Teacher::paginate();
@@ -24,23 +17,16 @@ class TeacherController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $teachers->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $teacher = new Teacher();
-        return view('teacher.create', compact('teacher'));
+        $users = User::pluck('name', 'id');
+
+        return view('teacher.create', compact('teacher', 'users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         request()->validate(Teacher::$rules);
@@ -51,12 +37,7 @@ class TeacherController extends Controller
             ->with('success', 'Teacher created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
         $teacher = Teacher::find($id);
@@ -64,26 +45,16 @@ class TeacherController extends Controller
         return view('teacher.show', compact('teacher'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $teacher = Teacher::find($id);
+        $users = User::pluck('name', 'id');
 
-        return view('teacher.edit', compact('teacher'));
+        return view('teacher.edit', compact('teacher', 'users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Teacher $teacher
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Teacher $teacher)
     {
         request()->validate(Teacher::$rules);
@@ -94,11 +65,7 @@ class TeacherController extends Controller
             ->with('success', 'Teacher updated successfully');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+  
     public function destroy($id)
     {
         $teacher = Teacher::find($id)->delete();

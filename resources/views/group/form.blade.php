@@ -17,8 +17,8 @@
             {!! $errors->first('schedule', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('course_id') }}
-            {{ Form::text('course_id', $group->course_id, ['class' => 'form-control' . ($errors->has('course_id') ? ' is-invalid' : ''), 'placeholder' => 'Course Id']) }}
+            {{ Form::label('course') }}
+            {{ Form::select('course_id', $courses, $group->course_id, ['class' => 'form-control' . ($errors->has('course_id') ? ' is-invalid' : ''), 'placeholder' => 'Course Id']) }}
             {!! $errors->first('course_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

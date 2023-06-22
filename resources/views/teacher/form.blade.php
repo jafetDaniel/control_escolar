@@ -37,8 +37,8 @@
             {!! $errors->first('photo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $teacher->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
+            {{ Form::label('user') }}
+            {{ Form::select('user_id', $users, $teacher->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
             {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

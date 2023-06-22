@@ -17,13 +17,13 @@
             {!! $errors->first('final_grade', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('student_id') }}
-            {{ Form::text('student_id', $groupsStudent->student_id, ['class' => 'form-control' . ($errors->has('student_id') ? ' is-invalid' : ''), 'placeholder' => 'Student Id']) }}
+            {{ Form::label('student') }}
+            {{ Form::select('student_id', $students, $groupsStudent->student_id, ['class' => 'form-control' . ($errors->has('student_id') ? ' is-invalid' : ''), 'placeholder' => 'Student Id']) }}
             {!! $errors->first('student_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('group_id') }}
-            {{ Form::text('group_id', $groupsStudent->group_id, ['class' => 'form-control' . ($errors->has('group_id') ? ' is-invalid' : ''), 'placeholder' => 'Group Id']) }}
+            {{ Form::label('group') }}
+            {{ Form::select('group_id', $groups, $groupsStudent->group_id, ['class' => 'form-control' . ($errors->has('group_id') ? ' is-invalid' : ''), 'placeholder' => 'Group Id']) }}
             {!! $errors->first('group_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

@@ -2,8 +2,11 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use App\Models\Career;
+use App\Models\Semester;
+
 
 class StudentController extends Controller
 {
@@ -20,7 +23,12 @@ class StudentController extends Controller
     public function create()
     {
         $student = new Student();
-        return view('student.create', compact('student'));
+
+        $users = User::pluck('name', 'id');
+        $careers = Career::pluck('name', 'id');
+        $semesters = Semester::pluck('name', 'id');
+
+        return view('student.create', compact('student', 'users', 'careers', 'semesters'));
     }
 
  
@@ -34,6 +42,7 @@ class StudentController extends Controller
         }
 
         Student::insert($student); //insertando datos a la BD
+
         return redirect()->route('students.index')
             ->with('success', 'Student created successfully.');
     }
@@ -50,7 +59,11 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
-        return view('student.edit', compact('student'));
+        $users = User::pluck('name', 'id');
+        $careers = Career::pluck('name', 'id');
+        $semesters = Semester::pluck('name', 'id');
+
+        return view('student.edit', compact('student', 'users', 'careers', 'semesters'));
     }
 
   

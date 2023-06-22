@@ -4,18 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use App\Models\Course;
 
-/**
- * Class GroupController
- * @package App\Http\Controllers
- */
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $groups = Group::paginate();
@@ -24,23 +17,16 @@ class GroupController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $groups->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create()
     {
         $group = new Group();
-        return view('group.create', compact('group'));
+        $courses = Course::pluck('name', 'id');
+
+        return view('group.create', compact('group', 'courses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
         request()->validate(Group::$rules);
@@ -51,12 +37,6 @@ class GroupController extends Controller
             ->with('success', 'Group created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $group = Group::find($id);
@@ -64,26 +44,16 @@ class GroupController extends Controller
         return view('group.show', compact('group'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function edit($id)
     {
         $group = Group::find($id);
+        $courses = Course::pluck('name', 'id');
 
-        return view('group.edit', compact('group'));
+        return view('group.edit', compact('group', 'courses'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  Group $group
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, Group $group)
     {
         request()->validate(Group::$rules);
@@ -94,11 +64,7 @@ class GroupController extends Controller
             ->with('success', 'Group updated successfully');
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+
     public function destroy($id)
     {
         $group = Group::find($id)->delete();

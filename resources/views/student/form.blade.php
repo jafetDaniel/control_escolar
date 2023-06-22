@@ -48,18 +48,19 @@
         <br>
 
         <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $student->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
+            {{ Form::label('user') }}
+            {{ Form::select('user_id', $users, $student->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
             {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
         <div class="form-group">
-            {{ Form::label('career_id') }}
-            {{ Form::text('career_id', $student->career_id, ['class' => 'form-control' . ($errors->has('career_id') ? ' is-invalid' : ''), 'placeholder' => 'Career Id']) }}
+            {{ Form::label('career') }}
+            {{ Form::select('career_id', $careers, $student->career_id, ['class' => 'form-control' . ($errors->has('career_id') ? ' is-invalid' : ''), 'placeholder' => 'Career Id']) }}
             {!! $errors->first('career_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('semester_id') }}
-            {{ Form::text('semester_id', $student->semester_id, ['class' => 'form-control' . ($errors->has('semester_id') ? ' is-invalid' : ''), 'placeholder' => 'Semester Id']) }}
+            {{ Form::label('semester') }}
+            {{ Form::select('semester_id', $semesters, $student->semester_id, ['class' => 'form-control' . ($errors->has('semester_id') ? ' is-invalid' : ''), 'placeholder' => 'Semester Id']) }}
             {!! $errors->first('semester_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

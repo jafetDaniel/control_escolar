@@ -17,13 +17,13 @@
             {!! $errors->first('credits', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('semester_id') }}
-            {{ Form::text('semester_id', $course->semester_id, ['class' => 'form-control' . ($errors->has('semester_id') ? ' is-invalid' : ''), 'placeholder' => 'Semester Id']) }}
+            {{ Form::label('semester') }}
+            {{ Form::select('semester_id', $semesters, $course->semester_id, ['class' => 'form-control' . ($errors->has('semester_id') ? ' is-invalid' : ''), 'placeholder' => 'Semester Id']) }}
             {!! $errors->first('semester_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('career_id') }}
-            {{ Form::text('career_id', $course->career_id, ['class' => 'form-control' . ($errors->has('career_id') ? ' is-invalid' : ''), 'placeholder' => 'Career Id']) }}
+            {{ Form::label('career') }}
+            {{ Form::select('career_id', $careers, $course->career_id, ['class' => 'form-control' . ($errors->has('career_id') ? ' is-invalid' : ''), 'placeholder' => 'Career Id']) }}
             {!! $errors->first('career_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
